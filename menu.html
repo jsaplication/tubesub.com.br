@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TubeSub - Views</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/menu.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+	  href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap"
+	  rel="stylesheet"
+	/>
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9730937392509652"
+     crossorigin="anonymous"></script>
+</head>
+<body onclick="hideSelect()">	
+
+	<div class="menu">
+		<div class="post_mesage"></div>
+    	<!-- <div class="logo"></div> -->
+	    <div class="tubesub-info">
+	        <div class="tubesub-logo"></div>
+	        <div class="btn-logout" onclick="select(event)" uid="sair">Doar</div>
+	        <!-- <div class="select select_sair">
+        		<div class="option" onclick="sair(this)"  type="whatsapp"><div class="icon-option" style="background-image: url(icones/sair.png);"></div>Sair da Conta</div>
+        	</div> -->
+	        <div class="info">
+	        	<div class="nome-user">TubeSub</div>
+	        	<div class="status-account">Ajude a manter este projeto no ar — faça uma doação</div>
+	        	<!-- <div class="status-expiration">Se você gostou, considere apoiar compartilhando com amigos</div> -->
+	        </div>
+	    </div>
+
+	    <div class="contas">Contas <totalcount>0</totalcount>/<limitecount>50</limitecount>
+	    	<div class="add-conta" onclick="select(event)" uid="newsession"><div class="icon-add">
+	    		<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+				  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+				</svg>
+
+
+	    	</div>Nova Conta</div>
+
+        	<div class="select select_newsession">
+        		<div class="option" onclick="newzap(this)"  type="youtube">
+        			<div class="icon-option">
+        				<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+							  <path fill-rule="evenodd" d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.151 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554v-5.62l5.4 2.819-5.4 2.801Z" clip-rule="evenodd"/>
+							</svg>
+
+        			</div>
+
+        			YouTube
+
+        		</div>
+
+
+        		<!-- <div class="option" onclick="newzap(this)"  type="gmail">
+        			<div class="icon-option">
+        				<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+						  <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m3.5 5.5 7.893 6.036a1 1 0 0 0 1.214 0L20.5 5.5M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/>
+						</svg>
+
+
+        			</div>
+
+        			Gmail
+
+        		</div> -->
+
+
+        	</div>
+
+
+	    </div>
+	    <div class="box-scroll">
+	    	
+    	<!-- 	<button class="btn-menu btn-dash" onclick="openTela(this)" uid="dashboard" id="navegadordashboard">
+	        	<div class="icon" style="background-image: url(./icones/dashboard.png); background-size: 60%; background-repeat: no-repeat; background-position: center center;" id="contadashboard"></div>
+	        	<div class="zap-name newname_dashboard" onkeyup="newName(this, event)" contenteditable="false" uid="dashboard">Dashboard</div>
+	        </button> -->
+	    	
+	        <div class="zap-box-button load-sessions"></div>
+	    </div>
+	</div>
+<input type="file" class="uploadcapa" style="display:none">
+<script src="js/jquery.js"></script>
+<script src="js/global.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>
