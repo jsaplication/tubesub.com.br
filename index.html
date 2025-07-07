@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TubeSub - Tudo sobre Criação de Conteúdo para YouTube</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #FF0000 0%, #FF6B6B 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        .adsense-container {
+            background: #f8f9fa;
+            border: 1px dashed #ccc;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="icones/tubesub.png" width="30px">
+                <h1 class="text-xl font-bold text-gray-800">Tube<span class="text-red-600">Sub</span></h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-red-600 font-medium">Início</a>
+                <a href="#about" class="text-gray-700 hover:text-red-600 font-medium">Sobre</a>
+                <a href="#tools" class="text-gray-700 hover:text-red-600 font-medium">Ferramentas</a>
+                <a href="#monetization" class="text-gray-700 hover:text-red-600 font-medium">Monetização</a>
+                <a href="#blog" class="text-gray-700 hover:text-red-600 font-medium">Blog</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="#login" class="text-gray-700 hover:text-red-600"><i class="fas fa-user"></i></a>
+                <button class="md:hidden text-gray-700" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white py-2 px-4 shadow-md" id="mobile-menu">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-red-600">Início</a>
+            <a href="#about" class="block py-2 text-gray-700 hover:text-red-600">Sobre</a>
+            <a href="#tools" class="block py-2 text-gray-700 hover:text-red-600">Ferramentas</a>
+            <a href="#monetization" class="block py-2 text-gray-700 hover:text-red-600">Monetização</a>
+            <a href="#blog" class="block py-2 text-gray-700 hover:text-red-600">Blog</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Domine o YouTube com o TubeSub</h1>
+                <p class="text-xl mb-8">A ferramenta open-source definitiva para criação de conteúdo e monetização no YouTube. Aprenda com os melhores e transforme seu canal em um negócio lucrativo.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#download" class="bg-white text-red-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-100 text-center">Baixar TubeSub</a>
+                    <a href="#learn" class="bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-lg hover:bg-white hover:text-red-600 text-center">Aprenda YouTube</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="images/capa.webp" alt="Dashboard TubeSub" class="rounded-lg shadow-2xl border-4 border-white">
+            </div>
+        </div>
+    </section>
+
+    <!-- AdSense Banner -->
+    <!-- <div class="container mx-auto px-4 py-6">
+        <div class="adsense-container rounded-lg">
+            <p class="text-gray-500">Anúncio AdSense</p>
+        </div>
+    </div> -->
+
+    <!-- Features Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Por que escolher o TubeSub?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-gray-50 p-6 rounded-lg transition duration-300">
+                    <div class="text-red-600 mb-4">
+                        <i class="fas fa-code text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Open-Source</h3>
+                    <p class="text-gray-600">Nosso software é totalmente aberto e gratuito, com uma comunidade ativa de desenvolvedores contribuindo para melhorias constantes.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card bg-gray-50 p-6 rounded-lg transition duration-300">
+                    <div class="text-red-600 mb-4">
+                        <i class="fas fa-chart-line text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Otimização SEO</h3>
+                    <p class="text-gray-600">Ferramentas integradas para análise de palavras-chave, sugestões de títulos e descrições que aumentam sua visibilidade.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card bg-gray-50 p-6 rounded-lg transition duration-300">
+                    <div class="text-red-600 mb-4">
+                        <i class="fas fa-money-bill-wave text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Monetização</h3>
+                    <p class="text-gray-600">Guias completos e ferramentas para ajudar você a monetizar seu conteúdo seguindo todas as diretrizes do YouTube.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TubeSub Tool Section -->
+    <section id="tools" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl font-bold mb-6 text-gray-800">Conheça o TubeSub</h2>
+                    <p class="text-gray-600 mb-6">Nossa ferramenta open-source oferece tudo que você precisa para criar conteúdo de sucesso no YouTube:</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Editor de vídeos integrado com templates profissionais</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Analisador de tendências em tempo real</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Gerador automático de legendas e thumbnails</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Integração direta com a API do YouTube</span>
+                        </li>
+                    </ul>
+                    <a href="#download" class="bg-red-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 inline-block">Download Gratuito</a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="images/interface.png" alt="Interface TubeSub" class="rounded-lg shadow-lg border border-gray-200">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monetization Guide -->
+    <section id="monetization" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Monetização no YouTube</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-red-50 border-l-4 border-red-600 p-4 mb-8">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-exclamation-circle text-red-600 text-xl mt-1 mr-3"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-red-700">Para monetizar seu canal, você precisa seguir as <a href="https://support.google.com/youtube/answer/1311392" class="font-bold underline" target="_blank">diretrizes do Programa de Parceiros do YouTube</a> e ter pelo menos 1.000 inscritos e 4.000 horas de visualização nos últimos 12 meses.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Métodos de Monetização</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-ad text-red-600 mt-1 mr-2"></i>
+                                <span><strong>AdSense:</strong> Anúncios exibidos em seus vídeos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-users text-red-600 mt-1 mr-2"></i>
+                                <span><strong>Membros do canal:</strong> Assinaturas mensais</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-shopping-bag text-red-600 mt-1 mr-2"></i>
+                                <span><strong>Merchandising:</strong> Venda de produtos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-heart text-red-600 mt-1 mr-2"></i>
+                                <span><strong>Super Chat/Stickers:</strong> Doações em lives</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Dicas de Monetização</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-clock text-red-600 mt-1 mr-2"></i>
+                                <span>Crie vídeos com pelo menos 8 minutos para mais espaços de anúncios</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-tags text-red-600 mt-1 mr-2"></i>
+                                <span>Use tags relevantes para aumentar sua visibilidade</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-thumbs-up text-red-600 mt-1 mr-2"></i>
+                                <span>Engajamento é crucial - responda comentários</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-calendar text-red-600 mt-1 mr-2"></i>
+                                <span>Mantenha uma programação consistente de uploads</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 text-white p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Canais de Sucesso</h3>
+                    <p class="mb-4">Estude os melhores canais em seu nicho. Alguns exemplos:</p>
+                    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <a href="#" class="hover:text-red-400">Cortes de Podcasts</a>
+                        <a href="#" class="hover:text-red-400">Manual do Mundo</a>
+                        <a href="#" class="hover:text-red-400">Filipe Ret</a>
+                        <a href="#" class="hover:text-red-400">Primo Rico</a>
+                        <a href="#" class="hover:text-red-400">Ludoviajante</a>
+                        <a href="#" class="hover:text-red-400">Coisa de Nerd</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AdSense Banner -->
+    <!-- <div class="container mx-auto px-4 py-6">
+        <div class="adsense-container rounded-lg">
+            <p class="text-gray-500">Anúncio AdSense</p>
+        </div>
+    </div> -->
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Artigos Recentes</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <img src="images/blog (1).jpg" alt="Thumbnail artigo" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-red-600 font-semibold">Tendências</span>
+                        <h3 class="text-xl font-bold mt-2 mb-3 text-gray-800">Os 5 melhores nichos para 2025</h3>
+                        <p class="text-gray-600 mb-4">Descubra quais nichos estão em alta no YouTube e como aproveitar essas oportunidades.</p>
+                        <a href="#" class="text-red-600 font-semibold hover:underline">Ler mais →</a>
+                    </div>
+                </div>
+                <!-- Article 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <img src="images/blog (1).png" alt="Thumbnail artigo" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-red-600 font-semibold">Ferramentas</span>
+                        <h3 class="text-xl font-bold mt-2 mb-3 text-gray-800">Como usar o TubeSub para criar vídeos virais</h3>
+                        <p class="text-gray-600 mb-4">Tutorial completo explorando todos os recursos do TubeSub para maximizar seu alcance.</p>
+                        <a href="#" class="text-red-600 font-semibold hover:underline">Ler mais →</a>
+                    </div>
+                </div>
+                <!-- Article 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <img src="images/blog (2).jpg" alt="Thumbnail artigo" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-red-600 font-semibold">Monetização</span>
+                        <h3 class="text-xl font-bold mt-2 mb-3 text-gray-800">Estratégias avançadas de AdSense para YouTubers</h3>
+                        <p class="text-gray-600 mb-4">Aprenda a configurar seu AdSense para maximizar seus ganhos com anúncios.</p>
+                        <a href="#" class="text-red-600 font-semibold hover:underline">Ler mais →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="#" class="bg-red-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-red-700 inline-block">Ver todos os artigos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-12 bg-red-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Receba Dicas Exclusivas</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Inscreva-se em nossa newsletter e receba semanalmente estratégias avançadas de crescimento no YouTube.</p>
+            <form class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Seu melhor e-mail" class="flex-grow px-4 py-3 rounded-l-lg focus:outline-none text-gray-800">
+                <button type="submit" class="bg-gray-800 text-white px-6 py-3 rounded-r-lg hover:bg-gray-900">Inscrever</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <img src="icones/tubesub.png" width="30px" style="margin-right: 10px;"> TubeSub
+                    </h3>
+                    <p class="text-gray-400">A plataforma definitiva para criadores de conteúdo no YouTube. Ferramentas open-source e conhecimento para seu sucesso.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Baixar TubeSub</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Documentação</a></li>
+                        <!-- <li><a href="#" class="text-gray-400 hover:text-white">Contribuir no GitHub</a></li> -->
+                        <li><a href="#" class="text-gray-400 hover:text-white">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Recursos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Tutoriais</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Fórum</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">API</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contato</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-gray-400 mr-2"></i>
+                            <span>contato@tubesub.com.br</span>
+                        </li>
+                       <!--  <li class="flex items-center">
+                            <i class="fab fa-github text-gray-400 mr-2"></i>
+                            <a href="#" class="hover:text-white">GitHub</a>
+                        </li> -->
+                        <li class="flex items-center">
+                            <i class="fab fa-discord text-gray-400 mr-2"></i>
+                            <a href="#" class="hover:text-white">Discord</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 TubeSub. Todos os direitos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                    <!-- <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a> -->
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AdSense Banner Fixed Bottom -->
+    <!-- <div class="fixed bottom-0 left-0 right-0 bg-white py-2 shadow-lg md:hidden">
+        <div class="adsense-container rounded mx-2">
+            <p class="text-gray-500 text-sm">Anúncio AdSense</p>
+        </div>
+    </div> -->
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Tooltip functionality
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(tooltip => {
+            tooltip.addEventListener('mouseenter', function() {
+                const tooltipText = this.querySelector('.tooltip-text');
+                tooltipText.classList.remove('hidden');
+                tooltipText.classList.add('block');
+            });
+            tooltip.addEventListener('mouseleave', function() {
+                const tooltipText = this.querySelector('.tooltip-text');
+                tooltipText.classList.remove('block');
+                tooltipText.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
