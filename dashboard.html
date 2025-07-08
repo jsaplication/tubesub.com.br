@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TubeSub - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'youtube-red': '#FF0000',
+                        'youtube-dark': '#0F0F0F',
+                        'youtube-gray': '#222222',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        [type="checkbox"]:checked {
+            background-image: none;
+        }
+        
+        .chart-container {
+            height: 250px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #FF0000, #FF4747);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .dark .gradient-text {
+            background: linear-gradient(90deg, #FF4747, #FF0000);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .valor_selecionado{
+        	background: red !important;
+        	color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-youtube-dark transition-colors duration-300">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="hidden md:flex flex-col w-64 bg-white dark:bg-youtube-gray h-screen fixed">
+            <div class="flex items-center justify-center h-20 bg-white dark:bg-youtube-gray border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center">
+                    <img src="icones/tubesub.png" width="30px" style="margin-right: 10px">
+                    <span class="text-2xl font-bold dark:text-white">Tube<span class="text-youtube-red">Sub</span></span>
+                </div>
+            </div>
+            <div class="flex flex-col flex-grow py-4 px-4 overflow-y-auto">
+                <div class="space-y-1">
+                    <a href="#dashboard" class="flex items-center px-4 py-3 text-youtube-red bg-red-50 dark:bg-gray-700 rounded-lg">
+                        <i class="fas fa-tachometer-alt mr-3"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#dicas" class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-lightbulb mr-3"></i>
+                        <span>Dicas YouTube</span>
+                    </a>
+                    <a href="#monetizacao" class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-money-bill-wave mr-3"></i>
+                        <span>Monetização</span>
+                    </a>
+                    <a href="#ferramentas" class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-tools mr-3"></i>
+                        <span>Ferramentas</span>
+                    </a>
+                    <a href="#doacao" class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fas fa-heart mr-3"></i>
+                        <span>Apoiar Projeto</span>
+                    </a>
+                </div>
+                <div class="mt-8">
+                    <h3 class="px-4 text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Contas Vinculadas</h3>
+                    <div class="mt-2">
+                        <!-- <div class="px-4 py-2 text-sm text-gray-700 dark:text-gray-300">Canal Principal</div>
+                        <div class="px-4 py-2 text-sm text-gray-700 dark:text-gray-300">Canal Secundário</div> -->
+                    </div>
+                </div>
+                <div class="mt-auto p-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-gray-300 dark:bg-gray-600">
+                            	<img src="icones/tubesub.png" width="100%">
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-gray-900 dark:text-white">TubeSub</p>
+                                <p class="text-xs font-medium text-gray-500 dark:text-gray-300">V1.0.0</p>
+                            </div>
+                        </div>
+                        <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2">
+                            <i class="fas fa-moon dark:hidden"></i>
+                            <i class="fas fa-sun hidden dark:inline"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 md:ml-64">
+            <!-- Mobile header -->
+            <div class="md:hidden flex items-center justify-between p-4 bg-white dark:bg-youtube-gray border-b dark:border-gray-700">
+                <div class="flex items-center">
+                    <i class="fab fa-youtube text-youtube-red text-2xl mr-2"></i>
+                    <span class="text-xl font-bold dark:text-white">Tube<span class="text-youtube-red">Sub</span></span>
+                </div>
+                <button id="mobile-menu-button" class="text-gray-500 dark:text-gray-400">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile sidebar -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-youtube-gray shadow-lg">
+                <div class="space-y-1 px-2 pt-2 pb-3">
+                    <a href="#dashboard" class="block px-3 py-2 text-youtube-red bg-red-50 dark:bg-gray-700 rounded-md">Dashboard</a>
+                    <a href="#dicas" class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">Dicas YouTube</a>
+                    <a href="#monetizacao" class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">Monetização</a>
+                    <a href="#ferramentas" class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">Ferramentas</a>
+                    <a href="#doacao" class="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md">Apoiar Projeto</a>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <!-- Dashboard Header -->
+                <div id="dashboard" class="mb-8">
+                    <h1 class="text-3xl font-bold text-gray-800 dark:text-white"><span class="gradient-text">TubeSub</span> Dashboard</h1>
+                    <p class="text-gray-600 dark:text-gray-400 mt-2">Dados de Youtubes usando o TubeSub, descubra as melhores estratégias para crescer no YouTube</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white dark:bg-youtube-gray rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-red-100 dark:bg-gray-700 text-youtube-red">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-gray-500 dark:text-gray-400">Novos usuarios no TubeSub</p>
+                                <p class="text-2xl font-semibold dark:text-white">12.324.589</p>
+                                <p class="text-green-500 text-sm">+12% desde ontem</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-youtube-gray rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-blue-100 dark:bg-gray-700 text-blue-500">
+                                <i class="fas fa-eye text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-gray-500 dark:text-gray-400">Visualizações no TubeSub</p>
+                                <p class="text-2xl font-semibold dark:text-white">100.129.786</p>
+                                <p class="text-green-500 text-sm">+8% desde ontem</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-youtube-gray rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-green-100 dark:bg-gray-700 text-green-500">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-gray-500 dark:text-gray-400">Tempo de Exibição</p>
+                                <p class="text-2xl font-semibold dark:text-white">59.234h</p>
+                                <p class="text-green-500 text-sm">+15% desde ontem</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-youtube-gray rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-yellow-100 dark:bg-gray-700 text-yellow-500">
+                                <i class="fas fa-dollar-sign text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-gray-500 dark:text-gray-400">Receita</p>
+                                <p class="text-2xl font-semibold dark:text-white">$100.375,40</p>
+                                <p class="text-green-500 text-sm">+5% desde ontem pago aos youtubes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dicas para Crescer no YouTube -->
+                <div id="dicas" class="bg-white dark:bg-youtube-gray rounded-lg shadow p-6 mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i> Melhores Dicas para Crescer no YouTube</h2>
+                        <span class="bg-youtube-red text-white px-3 py-1 rounded-full text-sm">Atualizado</span>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="border-l-4 border-youtube-red pl-4">
+                            <h3 class="text-xl font-semibold dark:text-white">1. Nicho Bem Definido</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">Escolha um nicho específico e crie conteúdo focado. Isso ajuda o algoritmo a entender seu público e recomendar seus vídeos.</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-youtube-red pl-4">
+                            <h3 class="text-xl font-semibold dark:text-white">2. SEO Otimizado</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">Use palavras-chave relevantes nos títulos, descrições e tags. O TubeSub oferece ferramentas poderosas para análise de palavras-chave.</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-youtube-red pl-4">
+                            <h3 class="text-xl font-semibold dark:text-white">3. Miniaturas Atraentes</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">Crie miniaturas que contem uma história e gerem curiosidade. Use cores contrastantes e expressões faciais claras.</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-youtube-red pl-4">
+                            <h3 class="text-xl font-semibold dark:text-white">4. Constância é Chave</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">Mantenha uma agenda de postagens consistente. O algoritmo recompensa canais que publicam regularmente conteúdo de qualidade.</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-youtube-red pl-4">
+                            <h3 class="text-xl font-semibold dark:text-white">5. Interação com o Público</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">Responda aos comentários e crie uma comunidade. Engajamento é um dos fatores mais importantes para o crescimento.</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-youtube-red pl-4">
+                            <h3 class="text-xl font-semibold dark:text-white">6. Use o TubeSub</h3>
+                            <p class="mt-2 text-gray-600 dark:text-gray-300">Utilize nossas ferramentas avançadas para gerenciar múltiplas contas, analisar dados e automatizar tarefas para focar no que realmente importa: criar conteúdo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monetização -->
+                <div id="monetizacao" class="bg-white dark:bg-youtube-gray rounded-lg shadow p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6"><i class="fas fa-money-bill-wave text-green-500 mr-2"></i> Como Ser Monetizado no YouTube</h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-red-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-youtube-red text-white p-2 rounded-full mr-3">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <h3 class="font-semibold dark:text-white">Requisitos Básicos</h3>
+                            </div>
+                            <ul class="text-gray-600 dark:text-gray-300 text-sm ml-11 space-y-2">
+                                <li>1.000 inscritos no canal</li>
+                                <li>4.000 horas de visualização (nos últimos 12 meses)</li>
+                                <li>Ter uma conta no Google AdSense</li>
+                                <li>Canal em conformidade com as diretrizes do YouTube</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-blue-500 text-white p-2 rounded-full mr-3">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 class="font-semibold dark:text-white">Estratégias</h3>
+                            </div>
+                            <ul class="text-gray-600 dark:text-gray-300 text-sm ml-11 space-y-2">
+                                <li>Vídeos com mais de 8 minutos permitem mais anúncios</li>
+                                <li>Use cards e anúncios de fim de vídeo</li>
+                                <li>Membroships e Super Chats para lives</li>
+                                <li>Monetize com patrocínios diretos</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-green-500 text-white p-2 rounded-full mr-3">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h3 class="font-semibold dark:text-white">Ferramentas TubeSub</h3>
+                            </div>
+                            <ul class="text-gray-600 dark:text-gray-300 text-sm ml-11 space-y-2">
+                                <li>Análise de melhores horários para postar</li>
+                                <li>Sugestões de conteúdo baseado em dados</li>
+                                <li>Monitoramento de receita em tempo real</li>
+                                <li>Acompanhamento de métricas específicas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 dark:bg-gray-700 p-6 rounded-lg">
+                        <div class="flex items-start">
+                            <div class="bg-yellow-500 text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold dark:text-white mb-2">Evite Demora na Monetização</h3>
+                                <p class="text-gray-600 dark:text-gray-300">Muitos criadores atingem os requisitos mas demoram para serem aceitos no Programa de Parcerias do YouTube. Com o TubeSub, você recebe alertas quando estiver próximo dos requisitos e orientações precisas para evitar reprovações.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefícios TubeSub -->
+                <div id="ferramentas" class="bg-white dark:bg-youtube-gray rounded-lg shadow p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6"><i class="fas fa-tools text-youtube-red mr-2"></i> Benefícios Exclusivos do TubeSub</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="border-b pb-6">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-purple-500 text-white p-2 rounded-full mr-3">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold dark:text-white">Sem Navegadores</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 ml-11">Acesse e gerencie suas contas do YouTube diretamente pela plataforma TubeSub, sem a necessidade de abrir múltiplos navegadores ou abas. Mais eficiência e menos consumo de recursos do seu computador.</p>
+                        </div>
+                        
+                        <div class="border-b pb-6">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-youtube-red text-white p-2 rounded-full mr-3">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold dark:text-white">Análise em Tempo Real</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 ml-11">Obtenha dados precisos de visualizações, likes, comentários e crescimento de inscritos em tempo real, com gráficos intuitivos e relatórios detalhados para cada vídeo publicado.</p>
+                        </div>
+                        
+                        <div class="border-b pb-6">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-green-500 text-white p-2 rounded-full mr-3">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold dark:text-white">Gerenciamento Multiplo</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 ml-11">Controle todas as suas contas do YouTube de um único painel. Ideal para redes de canais ou criadores com múltiplos nichos, permitindo alternar entre contas com um simples clique.</p>
+                        </div>
+                        
+                        <div class="border-b pb-6">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-blue-500 text-white p-2 rounded-full mr-3">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold dark:text-white">Otimização Avançada</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 ml-11">Receba recomendações personalizadas para melhorar o desempenho de seus vídeos, incluindo sugestões de tags, títulos e descrições baseadas em análise de grandes canais no seu nicho.</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex items-center mb-3">
+                                <div class="bg-pink-500 text-white p-2 rounded-full mr-3">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold dark:text-white">Segurança Reforçada</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 ml-11">Proteção contra shadowban e suspensões, com alertas antecipados sobre possíveis violações de diretrizes e ferramentas para manter seus canais em conformidade com as políticas do YouTube.</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex items-center mb-3">
+                                <div class="bg-orange-500 text-white p-2 rounded-full mr-3">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold dark:text-white">Automação Inteligente</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 ml-11">Programe postagens, respostas automáticas a comentários e interações estratégicas enquanto você se concentra na criação de conteúdo. O TubeSub trabalha para você 24/7.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-youtube-red to-pink-500 rounded-lg p-6 text-white">
+                        <div class="flex flex-col md:flex-row justify-between items-center">
+                            <div class="mb-4 md:mb-0">
+                                <h3 class="text-xl font-bold">Pronto para Crescer no YouTube?</h3>
+                                <p>Experimente o TubeSub gratuitamente</p>
+                            </div>
+                            <button class="bg-white text-youtube-red px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition duration-200">Click em Adicionar Contas</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Doação -->
+                <div id="doacao" class="bg-white dark:bg-youtube-gray rounded-lg shadow p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6"><i class="fas fa-heart text-youtube-red mr-2"></i> Apoie o Projeto TubeSub</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">O TubeSub é um projeto independente desenvolvido para ajudar criadores de conteúdo a crescerem no YouTube. Sua doação ajuda a manter e melhorar nossas ferramentas gratuitas.</p>
+                            
+                            <ul class="text-gray-600 dark:text-gray-300 space-y-3 mb-6">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>100% dos recursos são reinvestidos no desenvolvimento</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Mais servidores para melhor desempenho</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Novas funcionalidades baseadas em feedback</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Manutenção da versão gratuita do TubeSub</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                <h4 class="font-semibold dark:text-white mb-2">Benefícios para Apoiadores:</h4>
+                                <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                                    <li>• Acesso antecipado a novas features</li>
+                                    <li>• Menção nos créditos do TubeSub</li>
+                                    <li>• Descontos exclusivos em planos premium</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-youtube-red bg-opacity-10 dark:bg-opacity-20 p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-center dark:text-white mb-6">Escolha seu método de doação</h3>
+                            
+                            <div class="grid grid-cols-3 gap-3 mb-6">
+                                <!-- <div class="border border-gray-200 dark:border-gray-600 p-3 rounded-lg cursor-pointer hover:border-youtube-red transition duration-200">
+                                    <i class="fab fa-paypal text-blue-600 text-2xl mb-2"></i>
+                                    <p class="text-sm text-center dark:text-white">PayPal</p>
+                                </div>
+                                <div class="border border-gray-200 dark:border-gray-600 p-3 rounded-lg cursor-pointer hover:border-youtube-red transition duration-200">
+                                    <i class="fab fa-cc-visa text-blue-800 text-2xl mb-2"></i>
+                                    <p class="text-sm text-center dark:text-white">Cartão</p>
+                                </div> -->
+                                <div class="border border-gray-200 dark:border-gray-600 p-3 rounded-lg cursor-pointer hover:border-youtube-red transition duration-200">
+                                    <i class="fas fa-university text-green-600 text-2xl mb-2"></i>
+                                    <p class="text-sm text-center dark:text-white">PIX/Boleto</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-gray-700 dark:text-gray-300 mb-2">Valor da Doação</label>
+                                <div class="grid grid-cols-3 gap-2" id="valor-doacao">
+                                    <button class="bg-white dark:bg-gray-700 border dark:border-gray-600 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-600 transition duration-200" value="10">R$ 10</button>
+                                    <button class="bg-white dark:bg-gray-700 border dark:border-gray-600 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-600 transition duration-200" value="25">R$ 25</button>
+                                    <button class="bg-white dark:bg-gray-700 border dark:border-gray-600 py-2 rounded hover:bg-gray-50 dark:hover:bg-gray-600 transition duration-200" value="50">R$ 50</button>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-gray-700 dark:text-gray-300 mb-2">Outro Valor</label>
+                                <input type="text" placeholder="R$ 0,00" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-youtube-red focus:border-transparent dark:bg-gray-700 dark:text-white" id="outro_valor">
+                            </div>
+                            
+
+                            <div id="qrcode1"></div>
+							<div id="qrcode2" style="color: #fff !important; display: block; overflow: hidden;   word-break: break-word;"></div>
+
+
+                            <button class="w-full bg-youtube-red text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition duration-200" onclick="gerar()">Continuar para Pagamento</button>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t pt-6 text-center">
+                        <p class="text-gray-500 dark:text-gray-400">Obrigado por considerar apoiar o TubeSub! Juntos podemos construir a melhor ferramenta para criadores de conteúdo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jspix@1.0.1/jspix.js"></script>
+
+    <script type="text/javascript">
+var btn_valor = document.querySelectorAll('#valor-doacao button');
+
+btn_valor.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    const jaSelecionado = this.classList.contains('valor_selecionado');
+
+    // Remove de todos primeiro
+    btn_valor.forEach(function(b) {
+      b.classList.remove('valor_selecionado');
+    });
+
+    // Se não estava selecionado, adiciona
+    if (!jaSelecionado) {
+      this.classList.add('valor_selecionado');
+    }
+
+    // Pega valor (se quiser manter o log)
+    const valor = this.getAttribute('value');
+    console.log(valor);
+  });
+});
+
+
+document.querySelector('#outro_valor').addEventListener('input', function (e) {
+    let valor = e.target.value;
+
+    // Remove tudo que não for dígito
+    valor = valor.replace(/\D/g, '');
+
+    // Garante pelo menos "0" se o campo estiver vazio
+    if (valor === '') valor = '0';
+
+    // Converte e formata para duas casas decimais
+    valor = (parseInt(valor, 10) / 100).toFixed(2);
+
+    // Troca ponto por vírgula
+    valor = valor.replace('.', ',');
+
+    // Adiciona separadores de milhar
+    valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    e.target.value = valor;
+});
+
+function gerar() {
+    var elementoSelecionado = document.querySelector(".valor_selecionado");
+    var n_valor;
+
+    if (elementoSelecionado) {
+        n_valor = elementoSelecionado.getAttribute('value');
+    } else {
+        var outroElemento = document.querySelector('#outro_valor');
+        n_valor = outroElemento ? outroElemento.value : null;
+    }
+
+    console.log(n_valor);
+
+
+  
+
+   document.querySelector("#qrcode1").innerHTML = `<img src="images/qrcode.png" width="100%">`;
+   document.querySelector("#qrcode2").innerHTML = `Pix Copia-e-cola:
+00020126580014BR.GOV.BCB.PIX0136f7704056-e975-4a2d-894a-84bf68d412fb5204000053039865802BR5901N6001C62110507tubesub63044152`;
+
+}
+
+
+    </script>
+
+    <script>
+        // Toggle dark mode
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.documentElement.classList.add('dark');
+        } else if (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

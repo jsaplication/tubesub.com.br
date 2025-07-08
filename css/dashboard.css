@@ -1,0 +1,213 @@
+body{margin-top:20px;
+background:#eee;
+}
+.card {
+    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+.avatar.sm {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: .818125rem;
+}
+.table-nowrap .table td, .table-nowrap .table th {
+    white-space: nowrap;
+}
+.table>:not(caption)>*>* {
+    padding: 0.75rem 1.25rem;
+    border-bottom-width: 1px;
+}
+table th {
+    font-weight: 600;
+    background-color: #eeecfd !important;
+}
+
+.bg-danger{
+    color: #fff !important;
+}
+username{
+    color: #fff;
+}
+useremail{
+    color: #fff;
+}
+
+.shadow {
+    box-shadow: 0 0 3px rgb(53 64 78 / 20%) !important;
+}
+.rounded {
+    border-radius: 5px !important;
+}
+.bg-light {
+    background-color: #f7f8fa !important;
+}
+.bg-primary, .btn-primary, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.focus, .btn-outline-primary:not(:disabled):not(.disabled):active, .badge-primary, .nav-pills .nav-link.active, .pagination .active a, .custom-control-input:checked ~ .custom-control-label:before, #preloader #status .spinner > div, .social-icon li a:hover, .back-to-top:hover, .back-to-home a, ::selection, #topnav .navbar-toggle.open span:hover, .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots.clickable .owl-dot:hover span, .watch-video a .play-icon-circle, .sidebar .widget .tagcloud > a:hover, .flatpickr-day.selected, .flatpickr-day.selected:hover, .tns-nav button.tns-nav-active, .form-check-input.form-check-input:checked {
+    background-color: #6dc77a !important;
+}
+
+.badge {
+    padding: 5px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+}
+
+.btn-primary, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.focus, .btn-outline-primary:not(:disabled):not(.disabled):active {
+    box-shadow: 0 3px 7px rgb(109 199 122 / 50%) !important;
+}
+.btn-primary, .btn-outline-primary, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.focus, .btn-outline-primary:not(:disabled):not(.disabled):active, .bg-soft-primary .border, .alert-primary, .alert-outline-primary, .badge-outline-primary, .nav-pills .nav-link.active, .pagination .active a, .form-group .form-control:focus, .form-group .form-control.active, .custom-control-input:checked ~ .custom-control-label:before, .custom-control-input:focus ~ .custom-control-label::before, .form-control:focus, .social-icon li a:hover, #topnav .has-submenu.active.active .menu-arrow, #topnav.scroll .navigation-menu > li:hover > .menu-arrow, #topnav.scroll .navigation-menu > li.active > .menu-arrow, #topnav .navigation-menu > li:hover > .menu-arrow, .flatpickr-day.selected, .flatpickr-day.selected:hover, .form-check-input:focus, .form-check-input.form-check-input:checked, .container-filter li.active, .container-filter li:hover {
+    border-color: #6dc77a !important;
+}
+.bg-primary, .btn-primary, .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.focus, .btn-outline-primary:not(:disabled):not(.disabled):active, .badge-primary, .nav-pills .nav-link.active, .pagination .active a, .custom-control-input:checked ~ .custom-control-label:before, #preloader #status .spinner > div, .social-icon li a:hover, .back-to-top:hover, .back-to-home a, ::selection, #topnav .navbar-toggle.open span:hover, .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots.clickable .owl-dot:hover span, .watch-video a .play-icon-circle, .sidebar .widget .tagcloud > a:hover, .flatpickr-day.selected, .flatpickr-day.selected:hover, .tns-nav button.tns-nav-active, .form-check-input.form-check-input:checked {
+    background-color: #6dc77a !important;
+}
+.btn {
+    padding: 8px 20px;
+    outline: none;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    font-weight: 600;
+    border-radius: 5px;
+}
+.btn-primary {
+    background-color: #6dc77a !important;
+    border: 1px solid #6dc77a !important;
+    color: #fff !important;
+    box-shadow: 0 3px 7px rgb(109 199 122 / 50%);
+}
+
+a {
+text-decoration:none;    
+}
+
+/* Body wrap */
+.body-wrap {
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+   
+}
+.expired-notification{
+     display: none;
+}
+/* Container */
+
+
+/* Content */
+.content {
+    padding: 20px;
+}
+
+/* Main section */
+.main {
+    border-radius: 3px;
+    box-shadow: 0 0 3px rgb(53 64 78 / 20%) !important;
+}
+.active-notification{
+    display: none;
+}
+/* Header */
+.header {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 3px 3px 0 0;
+    background-color: red;
+    padding: 20px;
+}
+.movecard{
+
+  order: 1 !important;
+
+}
+.cards1{
+    order: 2;
+}
+.tagname:after{
+    content: 'Assinatura ativa';
+    width: auto;
+    background: #6dc77a !important;
+    height: 30px;
+    position: absolute;
+    margin-top: -30px;
+    border-radius: 10px 10px 0px 0px;
+    line-height: 30px !important;
+    font-size: 18px;
+    padding-left: 10px;
+    color: #fff;
+    padding-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.header-link {
+    font-size: 32px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.header-text {
+    display: block;
+    margin-top: 10px;
+}
+
+/* Content wrap */
+.content-wrap {
+    padding: 20px;
+}
+
+/* Content block */
+.content-block {
+    padding: 0 0 20px;
+}
+
+/* Button */
+.btn-primary {
+    font-size: 14px;
+    color: #FFF;
+    text-decoration: none;
+    line-height: 2em;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
+    text-transform: capitalize;
+    background-color: #f1556c;
+    border-color: #f1556c;
+    border-style: solid;
+    border-width: 8px 16px;
+    padding: 10px;
+}
+.ui-w-100 {
+    width: 100px !important;
+    height: auto;
+}
+
+.card {
+    background-clip: padding-box;
+    box-shadow: 0 1px 4px rgba(24,28,33,0.012);
+}
+
+.user-view-table td:first-child {
+    width: 9rem;
+}
+.user-view-table td {
+    padding-right: 0;
+    padding-left: 0;
+    border: 0;
+}
+
+.text-light {
+    color: #babbbc !important;
+}
+
+.card .row-bordered>[class*=" col-"]::after {
+    border-color: rgba(24,28,33,0.075);
+}    
+
+.text-xlarge {
+    font-size: 170% !important;
+}
