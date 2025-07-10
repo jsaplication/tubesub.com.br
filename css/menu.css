@@ -219,11 +219,13 @@ body{
     margin-right: -20px;
     margin-top: -5px;
 /*    background-color: #fff;*/
+/*background-image: url(../icones/youtube.wep) !important;*/
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;]
     margin-bottom: -20px;
+
 }
 /*.zap-photo{
     background-color: #fafafa;
@@ -284,7 +286,7 @@ body{
 
 }
 .option{
-    line-height: 25px !important;
+    line-height: 30px !important;
     opacity: 0.6;
     cursor: pointer;
 }
@@ -298,6 +300,7 @@ body{
     float: left;
     margin-right: 10px;
     color: #ff203b;
+    padding: 2px;
 }
 .icon-option svg{
     width: 100%;
